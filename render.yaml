@@ -95,7 +95,7 @@ services:
   region: oregon
   env: node
   buildCommand: NODE_ENV=development yarn; yarn build
-  startCommand: npx next start
+  startCommand: npx next start -H 0.0.0.0
   envVars:
   - key: NODE_ENV
     value: production
