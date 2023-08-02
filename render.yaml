@@ -86,7 +86,7 @@ services:
   - key: TEMPORAL_PORT
     value: 7233
   - key: TEMPORAL_ADDRESS
-    value: "temporal-l6zx:7233"
+    value: "temporal-iiw7:7233"
 
 - type: web
   repo: https://github.com/ruucm-working/temporal-nextjs
