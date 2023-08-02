@@ -79,17 +79,15 @@ services:
   plan: Starter
   region: oregon
   env: docker
-  dockerfilePath: ./web/Dockerfile
+  dockerfilePath: ./ui/Dockerfile
   envVars:
   - key: PORT
-    value: 8088
-  - key: TEMPORAL_PERMIT_WRITE_API
-    value: true
-  - key: TEMPORAL_GRPC_HOST
-    fromService:
-      name: temporal
-      type: pserv
-      property: host
+    value: 8080
+  - key: TEMPORAL_PORT
+    value: 7233
+  - key: TEMPORAL_ADDRESS
+    value: "temporal-l6zx:7233"
+
 - type: web
   repo: https://github.com/ruucm-working/temporal-nextjs
   name: workflow-nextjs
