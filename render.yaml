@@ -97,11 +97,10 @@ services:
   buildCommand: NODE_ENV=development yarn; yarn build
   startCommand: yarn start
   envVars:
-  - key: TEMPORAL_CLUSTER_HOST
-    fromService:
-      name: temporal
-      type: pserv
-      property: host
+  - key: NODE_ENV
+    value: production
+  - key: PORT
+    value: 3000
 - type: worker
   repo: https://github.com/ruucm-working/temporal-nextjs
   name: worker-nextjs
@@ -110,9 +109,3 @@ services:
   env: node
   buildCommand: NODE_ENV=development yarn; yarn build:temporal
   startCommand: yarn start:worker
-  envVars:
-  - key: TEMPORAL_CLUSTER_HOST
-    fromService:
-      name: temporal
-      type: pserv
-      property: host
