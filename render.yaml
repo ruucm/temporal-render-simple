@@ -91,13 +91,13 @@ services:
       type: pserv
       property: host
 - type: web
-  repo: https://github.com/render-examples/sample-temporal-app
-  name: app-workflow-trigger
+  repo: https://github.com/ruucm-working/temporal-nextjs
+  name: workflow-nextjs
   plan: Starter
   region: oregon
-  env: go
-  buildCommand: go build start/main.go
-  startCommand: ./main
+  env: node
+  buildCommand: NODE_ENV=development yarn; yarn build
+  startCommand: yarn start
   envVars:
   - key: TEMPORAL_CLUSTER_HOST
     fromService:
@@ -105,13 +105,13 @@ services:
       type: pserv
       property: host
 - type: worker
-  repo: https://github.com/render-examples/sample-temporal-app
-  name: app-worker
+  repo: https://github.com/ruucm-working/temporal-nextjs
+  name: worker-nextjs
   plan: Starter
   region: oregon
-  env: go
-  buildCommand: go build worker/main.go
-  startCommand: ./main
+  env: node
+  buildCommand: NODE_ENV=development yarn; yarn build:temporal
+  startCommand: yarn start:worker
   envVars:
   - key: TEMPORAL_CLUSTER_HOST
     fromService:
